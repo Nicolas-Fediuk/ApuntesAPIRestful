@@ -1,0 +1,3 @@
+﻿Cache con rediss:
+
+Instalar el: OutputCaching.StackExchangeRedis y Caching.StackExchangeRedis

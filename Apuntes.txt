@@ -1,0 +1,70 @@
+API: Interfaz de programación de aplicaciones, un api expone un consunto de métodos que pueden ser consumidos por distintos programas. Cuando consumimos una web api es porque queremos acceder a sus recursos 
+
+REST: Transferencia de estado representacional (Representational State Transfer). Es un estilo de construir servicios web. Condiciones para que sea REST:
+	1. Arquitectura Cliente-Servidor 
+	2. Interfaz uniforme: identificación del recurso (URL), 
+	   manipulación de recurso usando representantes (httpPost),
+	   Mensajes autodescriptivos,
+	   HATEOAS: liks
+	3. Protocolos sin estados
+	4. Cache: Las rspuestas del web api deben indicar cuando se deben guardar en cache
+	5. Arquitectura en capas
+	6. código en demanda (opcinal)
+	
+1: Estan las peticiones http y las respuesta http para comunicar el cliente con los datos.
+Las peticiones http se construye a partir de:
+* Una linea de petición
+	eje: Método (Get) URI (api/autores) Protocolo HTTP (2.0)
+* Conjuntos de campos de cabecera
+	Metadatos: eje: cache-control:no-cache
+* un cuerpo (opcional)
+	Información que se envia al servidor: Ej: un JSON 
+
+2: Codigo de estatus
+Codigo 1xx : Informacional, es un respuesta provisional y no final 
+		100: continue
+	2xx : Exitoso
+		200: OK
+		201: Created: el recurso a sido creado
+		202: Accepted: el recurso nuevo a sido procesado, pero no en el momento, se leinformara al usuario cuando este listo
+		204: No Content: ok, pero no se enviara un  uerpo de respuesta
+	3xx: Redireccion: Se necesita acciones adicionales del cliente para completar la accion
+	4xx: Error del cliente
+		400: Bad Request: error por parte del cliente
+		401: Unauthorized: necesita loggearse
+		403: Forbidden: esta loggeado pero no tiene permisos
+		404: not found: recurso no encontrado
+		405: Method Not Allowed: 
+	5xx: Error del servidor
+		500: Internal Server Error
+		503: Service Unavailable: el server caído
+
+Filtros: Son útiles cuando tenemos la necesidad de ejecutar una lógica en varias acciones de varios controladores y queremos evitar que tener que repetir código
+
+Configuraciones: son datos externos de nuestra aplicaciones que ayudan a nuestra aplicación a 
+funcionar correctamente, como el connnection string y como datos globales.
+Estas funtes de información vienen de distintas formas: Archivos de texto, objetos en memoriam, etc.
+
+Para cambiar de desarrollo a producción: click derecho al proyecto
+>> propiedades >> Debug >> General >> ASPNETCORE_ENVIRONMENT=production, VariableDeAmbiente = variable de ambiente
+
+si tengo una variable con el mismo nombre entre la variable de ambiente y el appseting toma la variable de la que se creo ultimo.
+
+Configuración por line de comando: Click derecho en el proyecto API, abrir en carpeta, abrir terminal aquí (donde este el csproj del proyecto) y escribir dotnet run -- "apellido=apellido"
+
+Es bueno tener la cadena de conexión de producción en una variable de ambiente
+
+Autenticación: Permisos de usurios, anonimo, basic, beader
+Beader: 
+1) -Instalar el Microsoft.AspNet.identity.EntityframeworkCore
+2)- el ApplicationDbContex debe de heredar de IdentityDbContext para que arme las tablas de logeo
+3)- se hacer un Add-Migration "nombre de la tabla que se agrego". Y se crean 3 tablas, la de usuarios, roles y reclamos. Y por ultimo un Update-database
+
+Logout: Para hacer un Deslogueo necesitamos borrar el JWT, nada mas 
+
+CORS: Intercambios de origen cruzados, es para que mi web api se pueda comunicar con otras webs apis.
+SOLO VA A FUNCIONAR EN APLICACIONES DE NAVEGADORES, OSEA, WEB
+
+SAL: es una cadena de carácter que se le concatena a un texto plano para despeus usar el hash para encryptar
+
+HTTPS: utiliza TLS para encriptar los datos que pasan del usuario al servidor para que nadie pueda ver los datos. Tenemos que configurar el servidor que para solo utilice peticiones https

@@ -1,0 +1,14 @@
+SUBIR IMAGENES A AZURE
+
+1)- Crear cuenta
+2)- Ir a Storage Accont
+3)- Crear nuevo Resource group "Biblioca API" (todo lo necesario de nuestro proyecto en un solo espacio)
+    Nombre
+    Región 
+    Seleccionamos "Azure Blod Storage or Data Lake Storagev Gen 2" para almacenar distintos archivos
+4)- En Advance
+    Seleccionar el "Allow enabling anonymous"
+5)- click en "Review and Create"
+6)- Instalar el nugget "Azure.Storage.Blobs"
+7)- Dentro de la pagina de Azure click en "Go to resource"
+8)- Buscamos Access keys, donde tenemos la llave para conectarnos a Azure. Y copiamos la llave 1
