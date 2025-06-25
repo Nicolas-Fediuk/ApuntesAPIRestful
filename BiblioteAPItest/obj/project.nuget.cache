@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IU1xrvB8G1duRry7XntZDdZggDyWuOOvcEpulAy610hJ1suTxwWqGa1TQk9uV/NUsqUaleI1A1EtdqIVhZtDwQ==",
+  "dgSpecHash": "GQI56p3Qpsi/EBDAyljVGzBDb/6B02+O2/wh0++q4S/rVk97ap2EuijU5S+b4CWhIlV9l15fwFD9hD4Scqmpww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nfediuk\\Desktop\\WebApi\\BiblioteAPItest\\BiblioteAPItest.csproj",
+  "projectFilePath": "C:\\Users\\nfediuk\\Desktop\\ApuntesAPIRestful\\BiblioteAPItest\\BiblioteAPItest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfediuk\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\nfediuk\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

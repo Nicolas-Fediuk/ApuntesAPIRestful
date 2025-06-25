@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dLKhQ4Jdixr2GSkMk0i1+Aa69ofVcxhsAhQkSF4HvxETkKUR57o8hBDwV7W0sdlCojfT/NPvzuEGzJtS4rIFyw==",
+  "dgSpecHash": "epudGoMLkB8IHcGmVuAtwbCb9NLdXtPZLsx98I4Od5sFD8BadC6uZqCQ7dH/aGCVQ4E2kODXs7qZ8GBZZqn+ZA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nfediuk\\Desktop\\WebApi\\4 - WebApiAutores\\WebApiAutores.csproj",
+  "projectFilePath": "C:\\Users\\nfediuk\\Desktop\\ApuntesAPIRestful\\4 - WebApiAutores\\WebApiAutores.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nfediuk\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\nfediuk\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

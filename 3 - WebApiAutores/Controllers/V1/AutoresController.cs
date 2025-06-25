@@ -13,6 +13,8 @@ using WebApiAutores.Servicios;
 using WebApiAutores.Utilidades;
 using System.Linq.Dynamic.Core;
 using WebApiAutores.Servicios.V1;
+using WebApiAutores.Migrations;
+using WebApiAutores.Utilidades.V1;
 
 namespace WebApiAutores.Controllers.V1
 {
@@ -22,7 +24,7 @@ namespace WebApiAutores.Controllers.V1
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
 
     //Filtro a nivel de cabecera
-    [FiltroAgregarCabecera("controlador", "autores")]
+    //[FiltroAgregarCabecera("controlador", "autores")]
     public class AutoresController : ControllerBase
     {
 
@@ -81,8 +83,11 @@ namespace WebApiAutores.Controllers.V1
         //Filtro para ejecutar antes y despues del Request
         //[ServiceFilter<MiFiltroDeAccion>()]
 
+
+        //[ServiceFilter<HATEOASAutoresAttribute>()]
         [FiltroAgregarCabecera("accion", "obtener-autores")]
-        public async Task<IEnumerable<AutorDTO>> Get([FromQuery] PaginacionDTO paginacionDTO)
+        public async Task<IEnumerable<AutorDTO>> 
+            Get([FromQuery] PaginacionDTO paginacionDTO)
         {
             //var autores = await context.Autores.ToListAsync();
 
@@ -91,8 +96,12 @@ namespace WebApiAutores.Controllers.V1
             var autores = await queryable.OrderBy(x => x.Id).Paginar(paginacionDTO).ToListAsync();
             var autoresDTO = Mapper.Map<IEnumerable<AutorDTO>>(autores);
             return autoresDTO;*/
+            return  await servicioAutoresV1.Get(paginacionDTO);
 
-            return await servicioAutoresV1.Get(paginacionDTO);
+            
+
+           
+            //return await servicioAutoresV1.Get(paginacionDTO);
 
 
             //mapea los campos de Autor en AutorDTO
@@ -107,6 +116,9 @@ namespace WebApiAutores.Controllers.V1
         //Para mostrar el tipo que puede retornar
         //[ProducesResponseType<AutorDTOConLibros>(StatusCodes.Status200OK)]
         //[ProducesResponseType<AutorDTOConLibros>(StatusCodes.Status404NotFound)]
+
+        //.net8 en adelante
+        //[ServiceFilter<HATEOASAutorAttribute>()] comentaria el GenerarEnlaces(dto);
         public async Task<ActionResult<AutorDTOConLibros>> Get([FromRoute]/*[Description("el id del autor")]*/ int id)
         {
             var autor = await context.Autores
@@ -206,23 +218,6 @@ namespace WebApiAutores.Controllers.V1
 
         }
 
-        private void GenerarEnlaces(AutorDTO autorDTO)
-        {
-            autorDTO.Enlaces.Add(new DatosHEATEOAS(
-                enlace: Url.Link("obtenerAutor", new { id = autorDTO.Id }),
-                descripcion: "self",
-                metodo: "GET"));
-
-            autorDTO.Enlaces.Add(new DatosHEATEOAS(
-                enlace: Url.Link("actualizarAutor", new { id = autorDTO.Id }),
-                descripcion: "autor-actualizar",
-                metodo: "PUT"));
-
-            autorDTO.Enlaces.Add(new DatosHEATEOAS(
-                enlace: Url.Link("eliminarAutor", new { id = autorDTO.Id }),
-                descripcion: "self",
-                metodo: "DELETE"));
-        }
 
         [HttpGet("{nombre}", Name = "obtenerAutorPorNombreV1")]
         public async Task<ActionResult<List<AutorDTO>>> Get(string nombre)

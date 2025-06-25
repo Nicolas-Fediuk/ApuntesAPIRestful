@@ -14,6 +14,7 @@ using WebApiAutores.Utilidades;
 using Microsoft.AspNetCore.Diagnostics;
 using WebApiAutores.Entidades;
 using WebApiAutores.Servicios.V1;
+using WebApiAutores.Utilidades.V1;
 
 namespace WebApiAutores
 {
@@ -133,23 +134,23 @@ namespace WebApiAutores
                 });
 
                 //asi solo le pongo el cadado a cada endpint en swagger
-                c.OperationFilter<FiltroAutorizacion>();
+                //c.OperationFilter<FiltroAutorizacion>();
 
                 //asi si no le quiero poner el filtro de swagger a cada endpoint
-                //c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                //{
-                //    {
-                //        new OpenApiSecurityScheme
-                //        {
-                //            Reference = new OpenApiReference
-                //            {
-                //                Type = ReferenceType.SecurityScheme,
-                //                Id = "Bearer"
-                //            }
-                //        },
-                //        new string[] {}
-                //    }
-                //});
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
             });
 
             //para ahcer autorizaciones basadas en Claims. y un usuario tiene un claims "EsAdmin" tiene permisos
@@ -218,6 +219,14 @@ namespace WebApiAutores
 
             //Servicio para reducir codigo entre las versiones
             services.AddScoped<WebApiAutores.Servicios.V1.IServicioAutores, WebApiAutores.Servicios.V1.ServicioAutores>();
+
+            services.AddScoped<WebApiAutores.Servicios.V1.IGeneradorEnlaces, WebApiAutores.Servicios.V1.GeneradorEnlaces>();
+
+            services.AddScoped<HATEOASFilterAttribute>();
+
+            services.AddScoped<HATEOASAutorAttribute>();
+
+            services.AddScoped<HATEOASAutoresAttribute>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)

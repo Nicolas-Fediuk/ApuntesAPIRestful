@@ -6616,11 +6616,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nfediuk\\Desktop\\WebApi\\4 - WebApiAutores\\WebApiAutores.csproj",
+      "projectUniqueName": "C:\\Users\\nfediuk\\Desktop\\ApuntesAPIRestful\\4 - WebApiAutores\\WebApiAutores.csproj",
       "projectName": "WebApiAutores",
-      "projectPath": "C:\\Users\\nfediuk\\Desktop\\WebApi\\4 - WebApiAutores\\WebApiAutores.csproj",
+      "projectPath": "C:\\Users\\nfediuk\\Desktop\\ApuntesAPIRestful\\4 - WebApiAutores\\WebApiAutores.csproj",
       "packagesPath": "C:\\Users\\nfediuk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nfediuk\\Desktop\\WebApi\\4 - WebApiAutores\\obj\\",
+      "outputPath": "C:\\Users\\nfediuk\\Desktop\\ApuntesAPIRestful\\4 - WebApiAutores\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
