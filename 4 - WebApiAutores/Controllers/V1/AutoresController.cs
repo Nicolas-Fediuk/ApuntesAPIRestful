@@ -119,7 +119,7 @@ namespace WebApiAutores.Controllers.V1
             var dto = Mapper.Map<AutorDTOConLibros>(autor);
 
             //muestro la respuesta y los enlaces que puede accceder el usuario
-            GenerarEnlaces(dto);
+            //GenerarEnlaces(dto);
 
             return dto;
         }
